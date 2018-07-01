@@ -21,6 +21,7 @@ var HangmanGameLogic = (function () {
         if (lettersRevealed === void 0) { lettersRevealed = 0; }
         if (displayImage === void 0) { displayImage = 1; }
         if (guessCharSet === void 0) { guessCharSet = new Set(); }
+        var _this = this;
         this.guessesLeftMessage = guessesLeftMessage;
         this.displayWord = displayWord;
         this.lettersGuessed = lettersGuessed;
@@ -41,13 +42,12 @@ var HangmanGameLogic = (function () {
         this.lettersRevealed = lettersRevealed;
         this.displayImage = displayImage;
         this.guessCharSet = guessCharSet;
-    }
-    HangmanGameLogic.prototype.run = function () {
-        var _this = this;
         this.wordSubmitButton.addEventListener('click', function (e) { return _this.setUp2PlayerGame(); });
         this.randomWordButton.addEventListener('click', function (e) { return _this.setUpRandomGame(); });
         this.guessButton.addEventListener('click', function (e) { return _this.guessLetter(); });
         this.resetButton.addEventListener('click', function (e) { return _this.resetGame(); });
+    }
+    HangmanGameLogic.prototype.run = function () {
         this.populateDictionary('files/words.txt');
         this.resetGame();
     };

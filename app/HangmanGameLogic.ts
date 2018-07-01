@@ -23,14 +23,13 @@ class HangmanGameLogic {
         private lettersRevealed = 0, // how many letters are known through guesses
         private displayImage = 1, // cycles through right side hangman graphic, corresponding to incorrectGuessesLeft
         private guessCharSet: Set<string> = new Set<string>(), // stores set of characters so there are no duplicate guesses
-    ) {}
-
-    public run(): void {
+    ) {
         this.wordSubmitButton.addEventListener('click', (e:Event) => this.setUp2PlayerGame());
         this.randomWordButton.addEventListener('click', (e:Event) => this.setUpRandomGame());
         this.guessButton.addEventListener('click', (e:Event) => this.guessLetter());
         this.resetButton.addEventListener('click', (e:Event) => this.resetGame());
-
+    }
+    public run(): void {
         this.populateDictionary('files/words.txt');
         this.resetGame();
     }
