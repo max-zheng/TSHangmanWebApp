@@ -1,0 +1,89 @@
+html {
+  font-size: 18px;
+  font-family: Arial Black;
+  font: comic;
+  text-align: center;
+}
+
+body {
+  background-image: linear-gradient(45deg,
+    #d1d1d1 25%,
+    #e0e0e0 25%,
+    #e0e0e0 50%,
+    #d1d1d1 50%,
+    #d1d1d1 75%,
+    #e0e0e0 75%,
+    #e0e0e0 100%);
+  background-size: 56.57px 56.57px;
+}
+
+.logo {
+  border: 2px solid red;
+  border-radius: 15px;
+  background-color: white;
+  width:600px;
+  height:150px
+}
+
+.titleText {
+  border: 2px solid red;
+  border-radius: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  font-family: Arial Black;
+  font-size: 16px;
+  background-color: white;
+}
+
+.errorMessage {
+  border: 2px solid red;
+  border-radius: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  font-family: Arial Black;
+  font-size: 12px;
+  background-color: white;
+}
+
+.image {
+  width:500px;
+  height:300px;
+  border: 2px solid red;
+  border-radius: 15px;
+}
+
+.guessPics {
+  width:400px;
+  height:325px;
+  border: 2px solid red;
+  border-radius: 15px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.bottomBox {
+  font-size: 35px;
+  border: 2px solid red;
+  background-color: white;
+}
+
+.resetButton {
+  width: 150px;
+  height:75px;
+  background-color: red;
+  font-family: Arial Black;
+}

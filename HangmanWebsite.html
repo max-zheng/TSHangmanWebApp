@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Hangman</title>
+
+    <meta name="author" content="Max Zheng">
+    <meta name="description" content="This is a web app which plays the game
+    Hangman, written using HTML CSS and JavaScript.">
+
+    <link rel="stylesheet" href="HangmanStyle.css">
+    <link rel="Shortcut Icon" href="images/hangmanfavicon.ico" type="image/x-icon">
+  </head>
+  <body>
+
+    <img src="images/logo.png" class="logo" alt="Hangman"><br>
+    <div class="intro">
+      <div class="titleText">You are playing Hangman. You need 2 players. The first player will enter a secret word.
+        The second player will try to guess the word by guessing letters in the word. After 5 incorrect letter guesses, you lose!
+      </div><br>
+      <label for="secretWord">Player 1 enter the secret word: </label>
+      <input type="text" id="secretWord" class="secretWord" onfocus="this.value='';">
+      <input type="submit" value="Submit" class="wordSubmitButton">
+      <label for="randomWord">Or use a random word: </label>
+      <input type="submit" value="Random" class="randomWordButton"><br><br>
+      <img src="images/intropic.jpg" alt="This is hangman"class="image"><br>
+      <span class="errorMessage">Enter words with a-z only!</span>
+    </div>
+    <div class="gameStart">
+    <div class="column">
+      <br><br><label for="letterGuess">Guess a letter: </label>
+      <input type="text" id="letterGuess" class="letterGuess" maxlength="1" style="width: 8px" onfocus="this.value='';">
+      <input type="submit" value="Guess letter" class="guessButton">
+      <div class="gameVars">
+        <p class="guessesLeftMessage"></p>
+        <p class="gameText"></p>
+        <br><div class="bottomBox">
+          <span class="displayWord"></span><br>
+          <span class="lettersGuessed"></span><br>
+          <span class="displayMessage"></span>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <br><div class="pics">
+        <img src="images/guesspics/0.png" class="guessPics">
+        <img src="images/guesspics/1.png" class="guessPics">
+        <img src="images/guesspics/2.png" class="guessPics">
+        <img src="images/guesspics/3.png" class="guessPics">
+        <img src="images/guesspics/4.png" class="guessPics">
+        <img src="images/guesspics/5.png" class="guessPics">
+      </div>
+    </div>
+
+    <br><br><input type="submit" value="New Game" class="resetButton">
+
+    <script src = "./bin/HangmanGameLogic.js"></script>
+
+  </body>
+</html>
