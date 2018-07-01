@@ -1,52 +1,36 @@
 class HangmanGameLogic {
 
-    private guessesLeftMessage: HTMLElement;
-    private displayWord: HTMLElement;
-    private lettersGuessed: HTMLElement;
-    private displayMessage: HTMLElement;
-    private errorMessage: HTMLElement;
-    private guessPics: HTMLElement;
-    private wordSubmitButton: HTMLElement;
-    private randomWordButton: HTMLElement;
-    private guessButton: HTMLInputElement;
-    private resetButton: HTMLElement;
-    private introPage: HTMLElement;
-    private gameStartPage: HTMLElement;
-    private letterGuess: HTMLInputElement;
+    constructor(
+        private guessesLeftMessage = <HTMLElement>document.querySelector('.guessesLeftMessage'),
+        private displayWord = <HTMLElement>document.querySelector('.displayWord'),
+        private lettersGuessed = <HTMLElement>document.querySelector('.lettersGuessed'),
+        private displayMessage = <HTMLElement>document.querySelector('.displayMessage'),
+        private errorMessage = <HTMLElement>document.querySelector('.errorMessage'),
+        private guessPics = <HTMLElement>document.querySelector('.pics'),
+        private wordSubmitButton = <HTMLElement>document.querySelector('.wordSubmitButton'),
+        private randomWordButton = <HTMLElement>document.querySelector('.randomWordButton'),
+        private guessButton = <HTMLInputElement>document.querySelector('.guessButton'),
+        private resetButton = <HTMLElement>document.querySelector('.resetButton'),
+        private introPage = <HTMLElement>document.querySelector('.intro'),
+        private gameStartPage = <HTMLElement>document.querySelector('.gameStart'),
+        private letterGuess = <HTMLInputElement>document.querySelector('.letterGuess'),
+        private wordDictionary: string[] = [],
+        private secretWord: string = "",
+        // The blanks that display showing which letters are known and which are unknown
+        // example: a _ _ l _ = a p p l e
+        private wordToDisplay: string = "",
+        private incorrectGuessesLeft = 5, // how many guesses player has left
+        private lettersRevealed = 0, // how many letters are known through guesses
+        private displayImage = 1, // cycles through right side hangman graphic, corresponding to incorrectGuessesLeft
+        private guessCharSet: Set<string> = new Set<string>(), // stores set of characters so there are no duplicate guesses
+    ) {}
 
-    private wordDictionary: string[] = [];
-    private secretWord: string = "";
-    // The blanks that display showing which letters are known and which are unknown
-    // example: a _ _ l _ = a p p l e
-    private wordToDisplay: string = "";
-
-    private incorrectGuessesLeft = 5; // how many guesses player has left
-    private lettersRevealed = 0; // how many letters are known through guesses
-    private displayImage = 1; // cycles through right side hangman graphic, corresponding to incorrectGuessesLeft
-    private guessCharSet: Set<string> = new Set<string>(); // stores set of characters so there are no duplicate guesses
-
-    constructor() {
-        this.guessesLeftMessage = <HTMLElement>document.querySelector('.guessesLeftMessage');
-        this.displayWord = <HTMLElement>document.querySelector('.displayWord');
-        this.lettersGuessed = <HTMLElement>document.querySelector('.lettersGuessed');
-        this.displayMessage = <HTMLElement>document.querySelector('.displayMessage');
-        this.errorMessage = <HTMLElement>document.querySelector('.errorMessage');
-        this.guessPics = <HTMLElement>document.querySelector('.pics');
-        this.wordSubmitButton = <HTMLElement>document.querySelector('.wordSubmitButton');
-        this.randomWordButton = <HTMLElement>document.querySelector('.randomWordButton');
-        this.guessButton = <HTMLInputElement>document.querySelector('.guessButton');
-        this.resetButton = <HTMLElement>document.querySelector('.resetButton');
-        this.introPage = <HTMLElement>document.querySelector('.intro');
-        this.gameStartPage = <HTMLElement>document.querySelector('.gameStart');
-        this.letterGuess = <HTMLInputElement>document.querySelector('.letterGuess');
-
+    public run(): void {
         this.wordSubmitButton.addEventListener('click', (e:Event) => this.setUp2PlayerGame());
         this.randomWordButton.addEventListener('click', (e:Event) => this.setUpRandomGame());
         this.guessButton.addEventListener('click', (e:Event) => this.guessLetter());
         this.resetButton.addEventListener('click', (e:Event) => this.resetGame());
-    }
 
-    public run(): void {
         this.populateDictionary('files/words.txt');
         this.resetGame();
     }

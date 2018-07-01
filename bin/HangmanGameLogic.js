@@ -1,33 +1,53 @@
 "use strict";
 var HangmanGameLogic = (function () {
-    function HangmanGameLogic() {
+    function HangmanGameLogic(guessesLeftMessage, displayWord, lettersGuessed, displayMessage, errorMessage, guessPics, wordSubmitButton, randomWordButton, guessButton, resetButton, introPage, gameStartPage, letterGuess, wordDictionary, secretWord, wordToDisplay, incorrectGuessesLeft, lettersRevealed, displayImage, guessCharSet) {
+        if (guessesLeftMessage === void 0) { guessesLeftMessage = document.querySelector('.guessesLeftMessage'); }
+        if (displayWord === void 0) { displayWord = document.querySelector('.displayWord'); }
+        if (lettersGuessed === void 0) { lettersGuessed = document.querySelector('.lettersGuessed'); }
+        if (displayMessage === void 0) { displayMessage = document.querySelector('.displayMessage'); }
+        if (errorMessage === void 0) { errorMessage = document.querySelector('.errorMessage'); }
+        if (guessPics === void 0) { guessPics = document.querySelector('.pics'); }
+        if (wordSubmitButton === void 0) { wordSubmitButton = document.querySelector('.wordSubmitButton'); }
+        if (randomWordButton === void 0) { randomWordButton = document.querySelector('.randomWordButton'); }
+        if (guessButton === void 0) { guessButton = document.querySelector('.guessButton'); }
+        if (resetButton === void 0) { resetButton = document.querySelector('.resetButton'); }
+        if (introPage === void 0) { introPage = document.querySelector('.intro'); }
+        if (gameStartPage === void 0) { gameStartPage = document.querySelector('.gameStart'); }
+        if (letterGuess === void 0) { letterGuess = document.querySelector('.letterGuess'); }
+        if (wordDictionary === void 0) { wordDictionary = []; }
+        if (secretWord === void 0) { secretWord = ""; }
+        if (wordToDisplay === void 0) { wordToDisplay = ""; }
+        if (incorrectGuessesLeft === void 0) { incorrectGuessesLeft = 5; }
+        if (lettersRevealed === void 0) { lettersRevealed = 0; }
+        if (displayImage === void 0) { displayImage = 1; }
+        if (guessCharSet === void 0) { guessCharSet = new Set(); }
+        this.guessesLeftMessage = guessesLeftMessage;
+        this.displayWord = displayWord;
+        this.lettersGuessed = lettersGuessed;
+        this.displayMessage = displayMessage;
+        this.errorMessage = errorMessage;
+        this.guessPics = guessPics;
+        this.wordSubmitButton = wordSubmitButton;
+        this.randomWordButton = randomWordButton;
+        this.guessButton = guessButton;
+        this.resetButton = resetButton;
+        this.introPage = introPage;
+        this.gameStartPage = gameStartPage;
+        this.letterGuess = letterGuess;
+        this.wordDictionary = wordDictionary;
+        this.secretWord = secretWord;
+        this.wordToDisplay = wordToDisplay;
+        this.incorrectGuessesLeft = incorrectGuessesLeft;
+        this.lettersRevealed = lettersRevealed;
+        this.displayImage = displayImage;
+        this.guessCharSet = guessCharSet;
+    }
+    HangmanGameLogic.prototype.run = function () {
         var _this = this;
-        this.wordDictionary = [];
-        this.secretWord = "";
-        this.wordToDisplay = "";
-        this.incorrectGuessesLeft = 5;
-        this.lettersRevealed = 0;
-        this.displayImage = 1;
-        this.guessCharSet = new Set();
-        this.guessesLeftMessage = document.querySelector('.guessesLeftMessage');
-        this.displayWord = document.querySelector('.displayWord');
-        this.lettersGuessed = document.querySelector('.lettersGuessed');
-        this.displayMessage = document.querySelector('.displayMessage');
-        this.errorMessage = document.querySelector('.errorMessage');
-        this.guessPics = document.querySelector('.pics');
-        this.wordSubmitButton = document.querySelector('.wordSubmitButton');
-        this.randomWordButton = document.querySelector('.randomWordButton');
-        this.guessButton = document.querySelector('.guessButton');
-        this.resetButton = document.querySelector('.resetButton');
-        this.introPage = document.querySelector('.intro');
-        this.gameStartPage = document.querySelector('.gameStart');
-        this.letterGuess = document.querySelector('.letterGuess');
         this.wordSubmitButton.addEventListener('click', function (e) { return _this.setUp2PlayerGame(); });
         this.randomWordButton.addEventListener('click', function (e) { return _this.setUpRandomGame(); });
         this.guessButton.addEventListener('click', function (e) { return _this.guessLetter(); });
         this.resetButton.addEventListener('click', function (e) { return _this.resetGame(); });
-    }
-    HangmanGameLogic.prototype.run = function () {
         this.populateDictionary('files/words.txt');
         this.resetGame();
     };

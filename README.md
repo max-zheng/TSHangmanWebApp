@@ -1,3 +1,5 @@
+* This is the HangmanWebApp ported over to Typescript. Functionality is the exact same as the Javascript version.
+
 Instructions:
 - You can play locally or host your own web server.
 - In order to play locally, simply clone this repo and within the directory, open HangmanWebsite.html
